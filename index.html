@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>Reset Seat Map</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.css"/>
+        <link rel="stylesheet" href="css/bootstrap-theme.css"/>
+        <script src="js/func.js" type="text/javascript"></script>
+
+    </head>
+    <body onload="preLoad();">
+        <!--选择重排方式-->
+        <div id="operateArea" class="col-lg-12 alert alert-success">
+            <div class="col-lg-2"></div>
+            <div id="randomReset" class="col-lg-4 text-center">
+                <input type="button" class="btn btn-primary" value="重新录入数据" onclick="showRInputDetailsArea();">
+            </div>
+            <div id="autoResetInfoArea" class="col-lg-4 text-center">
+                <br>
+                <h4><span style="color: #000">每周自动更新</span><b><a onclick="javascript: chgAutoResetWeekly();"><span id="autoResetBtn"></span></a></b></h4>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+
+        <!--输入具体细节数据-->
+        <div id="InputArea" class="col-lg-12 alert alert-warning">
+            <div id="InputDetailsArea" style="display: none;">
+                <form>
+                    <label>学生总人数:</label>
+                    <input type="number" id="headCount"/><br/>
+                    <label>大排数:</label>
+                    <input type="number" id="bigColCount"/><br/>
+                    <label>同位数:</label>
+                    <input type="number" id="deskmateCount"/><br/>
+                    <input type="button" class="btn btn-success" value="完成" onclick="createInputInfoTable();"/>
+                    <input type="reset" class="btn btn-danger" value="重置"/>
+                </form>
+            </div>
+            <div id="inputDetailsFbArea" style="display: none;"><!-- 输入数据反馈显示 -->
+                <div class="col-lg-6 col-md-6 col-sm-6"><div class="col-lg-1 col-md-1 col-sm-1 icon-calendar"></div><div>学生总人数：<span id='fbHeadCount'>" + headCount + "</span>    大排数：<span id='fbBigColCount'>" + bigColCount + "</span>    同位数：<span id='fbDeskmateCount'>" + deskmateCount + "</span></div></div>
+                <div class="col-lg-6 col-md-6 col-sm-6"><div class="col-lg-1 col-md-1 col-sm-1 icon-calendar"></div><span id="fbYear"></span>年<span id="fbMonth"></span>月<span id="fbDay"></span>日  第<span id="fbWeek"></span>周</div></div>
+        </div>
+
+        <!--输出区-->
+        <div id="outputArea">
+            <div id="tableArea" class="col-lg-12"></div><!--此div是在输入总人数、大排数、同位数 点击完成之后显示的-->
+            
+            <div id="afterTable1" class="col-lg-12 text-center">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6"><input type="button" class="btn btn-default" value="编辑表格" onclick="editTable();"/></div>
+                <div class="col-lg-3"></div>
+            </div>
+            
+            <div id="afterTable2" class="col-lg-12 text-center">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6"><input type="button" class="btn btn-success" value="以此表格数据作为自动重排数据源" onclick="autoReset();"/></div>
+                <div class="col-lg-3"></div>
+            </div>
+            <div id="afterTable3" class="col-lg-12 text-center">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6"><input type="button" class="btn btn-success" value="随机重排" onclick="preAbRandomReset();"/></div>
+                <div class="col-lg-3"></div>
+            </div>
+            <div id="afterTable4" class="col-lg-12 text-center">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6"><input type="button" class="btn btn-default" value="导出CSV" onclick="exportToCsv();"/></div>
+                <div class="col-lg-3"></div>
+            </div>
+            <div id="afterTable5" class="col-lg-12 text-center" style="display: none;">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6"><input  type="button" class="btn btn-danger" value="更新BL信息" onclick="updateBlackList();"/></div>
+                <div class="col-lg-3"></div>
+            </div>
+            <div id="afterTable6" class="col-lg-12 text-center" style="display: none;">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6"><input type="button" class="btn btn-danger" value="完成BL修改" onclick="getBlackList();"/></div>
+                <div class="col-lg-3"></div>
+            </div>
+<!--            <div id="afterTable7" class="col-lg-12 text-center" style="display: none;">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6"><input type="button" class="btn btn-danger" value="完成BL增加" onclick="getBlackList();"/></div>
+                <div class="col-lg-3"></div>
+            </div>-->
+
+        </div>
+
+
+
+
+    </body>
+</html>
